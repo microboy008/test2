@@ -1,5 +1,12 @@
-1 yum 源的安装和配置
-  光盘作为 yum 源
+准备环境 (真机)
+禁用 selinux 配置文件 /etc/selinux/config
+     SELINUX=disabled
+禁用 firewalld
+     systemctl stop firewalld
+     systemctl (un)mask firewalld
+
+1 yum 源的安装和配置(网络yum源)
+  光盘作为 yum 源 CentOS7-1708.iso (共9591包)
     有 repodata 目录的才可以作为 yum 源
   自定义 yum 源
     创建一个 repodata 
@@ -8,3 +15,6 @@
     createrepo --update .
 
 2 dns 服务
+3 时间服务器
+#------------------------------------------------------------------------#
+4 2台虚拟机(8G + 6G)
