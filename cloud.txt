@@ -17,4 +17,16 @@
 2 dns 服务
 3 时间服务器
 #------------------------------------------------------------------------#
+初始化虚拟机
+1 修改 /etc/selinux/config
+  SELINUX=disabled
+2 配置网卡配置文件 /etc/sysconfig/network-scripts/ifcfg-eth0
+3 停止 firewalld NetworkManager
+  systemctl stop firewalld
+  systemctl stop NetworkManager
+4 卸载 
+  yum remove -y NetworkManager-* firewalld-* python-firewall
+5 重启机器
+
+
 4 2台虚拟机(8G + 6G)
