@@ -1,0 +1,10 @@
+1 yum 源的安装和配置
+  光盘作为 yum 源
+    有 repodata 目录的才可以作为 yum 源
+  自定义 yum 源
+    创建一个 repodata 
+    createrepo .
+    更新
+    createrepo --update .
+
+2 dns 服务
