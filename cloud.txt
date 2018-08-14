@@ -55,5 +55,15 @@ yum install 包名
   修改完成之后创建引导文件
   grub2-mkconfig -o /boot/grub2/grub.cfg
 
+11 修改 fstab
+   blkid
+   修改 UUID=xxxxxx 为 /dev/xvda1
+
+12 安装分区扩展软件
+   yum install -y cloud-utils-growpart
+
+13 关闭虚拟机，清理信息
+   设置语言为英文 LANG=en_US.UTF-8
+   virt-sysprep -d 虚拟机名称
 
 4 2台虚拟机(8G + 6G)
