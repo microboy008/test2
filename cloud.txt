@@ -66,4 +66,8 @@ yum install 包名
    设置语言为英文 LANG=en_US.UTF-8
    virt-sysprep -d 虚拟机名称
 
+14 删除虚拟机定义
+   virsh undefine centos7.0
+
+
 4 2台虚拟机(8G + 6G)
