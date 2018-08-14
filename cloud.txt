@@ -24,6 +24,18 @@
   dnssec-validation no;
   
 3 时间服务器
+  yum install -y chrony 
+  server:配置 /etc/chrony.conf
+  server ntp1.aliyun.com iburst
+  bindacqaddress 0.0.0.0
+  allow 0/0
+  
+  client:配置 /etc/chrony.conf
+  server 192.168.1.254 iburst
+  
+  检查状态
+  chronyc sources -v
+  * 同步成功，+ 备胎 , ? 同步失败
 #------------------------------------------------------------------------#
 初始化虚拟机
 1 修改 /etc/selinux/config
