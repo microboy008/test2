@@ -52,5 +52,8 @@ yum install 包名
 10 添加串口终端
   配置文件 /etc/default/grub
   修改内容看范例
+  修改完成之后创建引导文件
+  grub2-mkconfig -o /boot/grub2/grub.cfg
+
 
 4 2台虚拟机(8G + 6G)
