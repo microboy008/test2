@@ -44,4 +44,13 @@ yum install 包名
 修改 local.repo  gpgcheck=1
 使用 yum install lftp lrzsz 验证
 
+9 配置网络，禁用空路由
+  配置文件 /etc/sysconfig/network
+  NOZEROCONF="yes"
+  网卡配置文件见范例
+
+10 添加串口终端
+  配置文件 /etc/default/grub
+  修改内容看范例
+
 4 2台虚拟机(8G + 6G)
