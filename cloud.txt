@@ -61,6 +61,10 @@ yum install 包名
 
 12 安装分区扩展软件
    yum install -y cloud-utils-growpart
+   扩展磁盘分区空间(让 /dev/vda1 变大)
+   /usr/bin/growpart /dev/vda 1
+   扩展文件系统识别空间(让 df -h 可使用空间变大)
+   /usr/sbin/xfs_growfs /
 
 13 关闭虚拟机，清理信息 (真机)
    设置语言为英文 LANG=en_US.UTF-8
