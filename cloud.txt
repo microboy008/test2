@@ -126,3 +126,4 @@ qemu-img create -f qcow2 disk.img 20G
      要求与第一台虚拟主机的两个 IP 都能 ping 通
   硬盘
      / 的 vda1 要求 50G
+
