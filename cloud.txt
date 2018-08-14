@@ -86,4 +86,43 @@ yum install 包名
    连接查看虚拟机
    virsh console node1
 
-4 2台虚拟机(8G + 6G)
+#-----------------------------------------#
+添加网卡
+    <interface type='bridge'>
+      <source bridge='private1'/>
+      <model type='virtio'/>
+    </interface>
+
+添加硬盘
+cd /var/lib/libvirt/images/
+qemu-img create -f qcow2 disk.img 20G
+
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/var/lib/libvirt/images/disk.img'/>
+      <target dev='vdb' bus='virtio'/>
+    </disk>
+
+#-----------------------------------------#
+创建 2 个虚拟机
+要求：
+虚拟机1 
+  8G 内存
+  2块网卡
+     第一块网卡连接虚拟交换机 vbr
+     第二块网卡连接虚拟交换机 private1
+     设置静态 IP，默认网关 192.168.1.254
+
+     2块硬盘
+     其中 / 的 vda1 要求 50G
+     vdb  20G
+
+虚拟机2
+  6G 内存
+  2块网卡
+     第一块网卡连接虚拟交换机 vbr
+     第二块网卡连接虚拟交换机 private1
+     设置静态 IP，默认网关 192.168.1.254
+     要求与第一台虚拟主机的两个 IP 都能 ping 通
+  硬盘
+     / 的 vda1 要求 50G
