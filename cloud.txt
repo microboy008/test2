@@ -27,6 +27,16 @@
 4 卸载 
   yum remove -y NetworkManager-* firewalld-* python-firewall
 5 重启机器
+6 配置 yum 源
+[local_repo]
+name=CentOS-$releasever - Base
+baseurl="ftp://192.168.1.254/centos7"
+enabled=1
+gpgcheck=0
+
+7 安装软件
+yum provides 命令
+yum install 包名
 
 
 4 2台虚拟机(8G + 6G)
