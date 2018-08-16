@@ -147,3 +147,10 @@ qemu-img create -f qcow2 disk.img 20G
   硬盘
      / 的 vda1 要求 50G
 
+# 环境检查
+sestatus 检查 selinux 是否关闭了
+rpm -qa |grep -P "firewalld|NetworkManager"  是否卸载了 NetworkManager 和 firewalld
+chronyc sources -v 检查时间服务器是否可用
+nslookup  检查 dns 服务器是否可用
+yum repolist 检查包 9591 个
+
