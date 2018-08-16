@@ -153,4 +153,76 @@ rpm -qa |grep -P "firewalld|NetworkManager"  是否卸载了 NetworkManager 和 
 chronyc sources -v 检查时间服务器是否可用
 nslookup  检查 dns 服务器是否可用
 yum repolist 检查包 9591 个
+free -m 查看内存是否够 8G
+lsblk 查看是否有 20G 的 vdb 设备
+ifconfig 查看是否两块网卡，而且都能 ping 通
 
+# 配置 openstack yum 源 共 12 个 10731 包
+[openstack_extras]
+name=openstack extras
+baseurl="ftp://192.168.1.254/openstack-ext"
+enabled=1
+gpgcheck=0
+
+[rhel-7-server-openstack-10-devtools-rpms]
+name=rhel-7-server-openstack-10-devtools-rpms
+baseurl=ftp://192.168.1.254/openstack/rhel-7-server-openstack-10-devtools-rpms
+enabled=1
+gpgcheck=0
+
+[rhel-7-server-openstack-10-optools-rpms]
+name=rhel-7-server-openstack-10-optools-rpms
+baseurl=ftp://192.168.1.254/openstack/rhel-7-server-openstack-10-optools-rpms
+enabled=1
+gpgcheck=0
+
+[rhel-7-server-openstack-10-rpms]
+name=rhel-7-server-openstack-10-rpms
+baseurl=ftp://192.168.1.254/openstack/rhel-7-server-openstack-10-rpms
+enabled=1
+gpgcheck=0
+
+[rhel-7-server-openstack-10-tools-rpms]
+name=rhel-7-server-openstack-10-tools-rpms
+baseurl=ftp://192.168.1.254/openstack/rhel-7-server-openstack-10-tools-rpms
+enabled=1
+gpgcheck=0
+
+[rhel-7-server-rhceph-2-mon-rpms]
+name=rhel-7-server-rhceph-2-mon-rpms
+baseurl=ftp://192.168.1.254/openstack/rhel-7-server-rhceph-2-mon-rpms
+enabled=1
+gpgcheck=0
+
+[rhel-7-server-rhceph-2-osd-rpms]
+name=rhel-7-server-rhceph-2-osd-rpms
+baseurl=ftp://192.168.1.254/openstack/rhel-7-server-rhceph-2-osd-rpms
+enabled=1
+gpgcheck=0
+
+[rhel-7-server-rhceph-2-tools-rpms]
+name=rhel-7-server-rhceph-2-tools-rpms
+baseurl=ftp://192.168.1.254/openstack/rhel-7-server-rhceph-2-tools-rpms
+enabled=1
+gpgcheck=0
+
+[rhel-7-server-rhscon-2-agent-rpms]
+name=rhel-7-server-rhscon-2-agent-rpms
+baseurl=ftp://192.168.1.254/openstack/rhel-7-server-rhscon-2-agent-rpms
+enabled=1
+gpgcheck=0
+
+[rhel-7-server-rhscon-2-installer-rpms]
+name=rhel-7-server-rhscon-2-installer-rpms
+baseurl=ftp://192.168.1.254/openstack/rhel-7-server-rhscon-2-installer-rpms
+enabled=1
+gpgcheck=0
+
+[rhel-7-server-rhscon-2-main-rpms]
+name=rhel-7-server-rhscon-2-main-rpms
+baseurl=ftp://192.168.1.254/openstack/rhel-7-server-rhscon-2-main-rpms
+enabled=1
+gpgcheck=0
+
+
+#-----------------------------------------#
