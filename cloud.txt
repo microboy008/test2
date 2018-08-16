@@ -224,5 +224,22 @@ baseurl=ftp://192.168.1.254/openstack/rhel-7-server-rhscon-2-main-rpms
 enabled=1
 gpgcheck=0
 
-
 #-----------------------------------------#
+安装 openstack
+1、配置卷组，安装依赖软件包
+yum install -y lvm2
+pvcreate /dev/vdb
+vgcreate cinder-volumes  /dev/vdb
+vgs
+
+yum install -y qemu-kvm \
+libvirt-daemon libvirt-client libvirt-daemon-driver-qemu \
+python-setuptools
+
+2、安装 packstack
+3、安装 openstack
+
+
+
+
+
