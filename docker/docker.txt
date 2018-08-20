@@ -1,0 +1,5 @@
+docker images # 查看镜像
+
+docker search busybox # 查找镜像
+
+docker pull busybox # 下载镜像
