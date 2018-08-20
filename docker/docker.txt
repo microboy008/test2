@@ -3,3 +3,7 @@ docker images # 查看镜像
 docker search busybox # 查找镜像
 
 docker pull busybox # 下载镜像
+
+docker save busybox:latest >busybox.tar # 备份镜像为 tar 包
+
+docker load <busybox.tar # 恢复备份的 tar 包
