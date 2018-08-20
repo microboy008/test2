@@ -66,3 +66,33 @@ docker rmi 镜像名称:标签
 创建镜像别名
 docker tag 源镜像名称:标签 新名称:新标签
 
+容器命令介绍
+docker run 
+-i 交互式
+-t 终端
+-d 后台进程
+
+启动一个交互式的终端 /bin/bash /usr/bin/python
+docker run -it centos /bin/bash
+docker run -it centos /usr/bin/python
+
+启动一个服务(非交互) nginx 
+docker run -d nginx
+
+启动一个交互式的终端，放在后台运行 /bin/bash &
+docker run -itd centos
+
+查看容器  docker ps
+-a 所有容器
+-q 只显示id
+停止所有正在运行中的容器
+docker stop $(docker ps -q)
+删除所有容器
+docker rm $(docker ps -aq)
+查看容器内进程列表
+docker top 容器id
+查看容器详细信息，查看容器 ip
+docker inspect 容器id
+docker inspect -f "{{.NetworkSettings.IPAddress}}"  容器id
+
+
