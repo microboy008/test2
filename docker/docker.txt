@@ -95,4 +95,19 @@ docker top 容器id
 docker inspect 容器id
 docker inspect -f "{{.NetworkSettings.IPAddress}}"  容器id
 
+进入一个已经运行的容器
+docker exec -it 容器id /bin/bash
+
+连接一个已经运行容器的 pid为1 的进程
+退出后容器会结束，如果不想结束需要把容器放入后台(ctrl + pq)
+docker attach 容器id
+
+#------------------------------------------#
+        redhat              debina
+#------------------------------------------#
+      RHEL,CentOS           debina
+        fedora              ubuntu
+安装      yum               apt-get
+管理      rpm                dpkg
+#------------------------------------------#
 
