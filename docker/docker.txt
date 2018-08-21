@@ -111,3 +111,31 @@ docker attach 容器id
 管理      rpm                dpkg
 #------------------------------------------#
 
+编排镜像
+1、创建容器
+docker run -it centos
+2、修改配置、安装软件
+3、创建镜像
+docker ps -a
+docker commit 容器ID  镜像名称:标签
+
+Dockerfile 01
+FROM centos:latest
+RUN  rm -f /etc/yum.repos.d/*
+ADD  local.repo /etc/yum.repos.d/local.repo
+RUN  yum install -y net-tools psmisc vim
+
+Dockerfile 02
+FROM myos:latest
+CMD ["/usr/bin/python"]
+
+Dockerfile 03
+FROM myos
+RUN  yum install -y httpd
+WORKDIR /var/www/html
+RUN  echo "hello nsd1804" >index.html
+ENV  EnvironmentFile=/etc/sysconfig/httpd
+EXPOSE 80
+CMD  ["/usr/sbin/httpd", "-DFOREGROUND"]
+
+
