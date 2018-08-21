@@ -178,3 +178,10 @@ curl http://192.168.1.11:5000/v2/myos/tags/list
 存储卷映射
 docker run -itd -v 物理机文件夹:容器内文件夹 镜像:标签
 
+创建虚拟交换机
+docker network create --driver=bridge --subnet 192.168.100.0/24 docker1
+创建一个新的容器，使用新的交换机
+docker run -it --network=docker1 myos
+
+创建容器，使用宿主机的端口 -p 宿主机端口:容器端口
+docker run -d -p 80:80 -v /var/webroot:/var/www/html 192.168.1.11:5000/myos:httpd
