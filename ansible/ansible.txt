@@ -89,3 +89,18 @@ if [ $? != 0 ];then
 fi
 ansible all -m scriopt -a "urscriopt.sh"
 
+copy lineinfile replace 模块
+copy 把文件发布到远程其他主机上面
+lineinfile  修改一个文件的一行，以行为基础，整行修改
+replace    修改文件的某一部分，以正则表达式匹配为基础修改
+
+利用 copy 模块修改所有机器的 /etc/resolv.conf 为 
+nameserver 8.8.8.8
+
+利用 lineinfile 修改 /etc/sysconfig/network-scriopts/ifcfg-eth0 
+ONBOOT=yes|no
+ansible cache -m lineinfile -a 'path=/etc/sysconfig/network-scripts/ifcfg-eth0 regexp="^ONBOOT" line="ONBOOT=\"no\""
+
+利用 replace 修改 /etc/sysconfig/network-scriopts/ifcfg-eth0 
+ONBOOT=no|yes
+ansible cache -m replace -a 'path=/etc/sysconfig/network-scripts/ifcfg-eth0 regexp="^(ONBOOT=).*" replace="\1\"yes\""'
