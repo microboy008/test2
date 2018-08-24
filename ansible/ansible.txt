@@ -104,3 +104,17 @@ ansible cache -m lineinfile -a 'path=/etc/sysconfig/network-scripts/ifcfg-eth0 r
 利用 replace 修改 /etc/sysconfig/network-scriopts/ifcfg-eth0 
 ONBOOT=no|yes
 ansible cache -m replace -a 'path=/etc/sysconfig/network-scripts/ifcfg-eth0 regexp="^(ONBOOT=).*" replace="\1\"yes\""'
+
+yum 模块  installed 安装， removed 删除
+ansible other -m yum -a 'name="lrzsz" state=removed' 
+ansible other -m yum -a 'name="lftp"  state=removed'
+ansible other -m yum -a 'name="lrzsz,lftp" state=installed'
+
+service 模块  name 指定服务名称，enabled= yes|no 设置开机启动， state=stopped|started 启动关闭服务
+
+设置 chronyd 服务开启启动，并启动服务
+ansible other -m service -a 'name="chronyd" enabled="yes"  state="started"'
+
+setup 模块，查看信息  filter 过滤指定的关键字
+
+
