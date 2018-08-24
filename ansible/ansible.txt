@@ -117,4 +117,50 @@ ansible other -m service -a 'name="chronyd" enabled="yes"  state="started"'
 
 setup 模块，查看信息  filter 过滤指定的关键字
 
+playbook ping.yml
+---
+- hosts: db1,web1
+  remote_user: root
+  tasks:
+    - ping:
+
+playbook user01.yml
+---
+- hosts: db1,web1
+  remote_user: root
+  tasks:
+    - name: create user plj
+      shell: adduser plj
+    - shell: echo 123456 |passwd --stdin plj
+    - shell: chage -d 0
+
+playbook httpd.yml
+---
+- hosts: web
+  remote_user: root
+  tasks:
+    - name: install the latest version of Apache
+      yum:
+        name: httpd
+        state: installed
+    - lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^Listen '
+        insertafter: '^#Listen '
+        line: 'Listen 8080'
+    - lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^#ServerName'
+        line: 'ServerName localhost'
+    - copy:
+        src: /root/index.html
+        dest: /var/www/html/index.html
+        owner: apache
+        group: apache
+        mode: 0644
+    - service:
+        name: httpd
+        state: started
+        enabled: yes
+
 
