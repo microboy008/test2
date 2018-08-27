@@ -241,4 +241,18 @@ http02.yml handlers 使用
         name: httpd
         enabled: yes
 
+把负载高的web服务器停止
+---
+- hosts: web
+  remote_user: root
+  tasks:
+    - shell: uptime |awk '{printf("%.2f",$(NF-2))}'
+      register: result
+    - service: name=httpd state=stopped
+      when: result.stdout|float > 0.7
+追加 debug 调试信息
+    - name: Show debug info
+      debug: var=ooxx
+
+测试命令 awk 'BEGIN{while(1){}}'
 
