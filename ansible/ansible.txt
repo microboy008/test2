@@ -256,3 +256,33 @@ http02.yml handlers 使用
 
 测试命令 awk 'BEGIN{while(1){}}'
 
+循环添加多用户
+---
+- hosts: db2
+  remote_user: root
+  tasks:
+    - name: create user
+      user:
+        name: "{{item.name}}"
+        password: "{{item.pwd|password_hash('sha512')}}"
+        group: "{{item.group}}"
+      with_items:
+        - { name: "nb", pwd: "aa", group: "users" }
+        - { name: "dd", pwd: "bb", group: "mail" }
+        - { name: "jj", pwd: "cc", group: "wheel" }
+        - { name: "xx", pwd: "dd", group: "root" }
+
+嵌套循环
+---
+- hosts: cache
+  remote_user: root
+  vars:
+    un: [a, b, c]
+    id: [1, 2, 3]
+  tasks:
+    - name: add users
+      shell: echo {{item}}
+      with_nested:
+        - "{{un}}"
+        - "{{id}}"
+
