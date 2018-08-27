@@ -199,3 +199,45 @@ user04.yml 忽略错误
       ignore_errors: True
     - shell: echo 123123 |passwd --stdin "{{username}}"
     - shell: chage -d 0 "{{username}}"
+
+http02.yml handlers 使用
+---
+- hosts: cache
+  remote_user: root
+  tasks:
+    - name: install the latest version of Apache
+      yum:
+        name: httpd
+        state: installed
+      notify:
+        - boot start
+    - lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^Listen '
+        insertafter: '^#Listen '
+        line: 'Listen 8080'
+      notify:
+        - restart httpd
+    - lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^#ServerName'
+        line: 'ServerName localhost'
+      notify:
+        - restart httpd
+    - copy:
+        src: index.html
+        dest: /var/www/html/index.html
+        owner: apache
+        group: apache
+        mode: 0644
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted
+    - name: boot start
+      service:
+        name: httpd
+        enabled: yes
+
+
