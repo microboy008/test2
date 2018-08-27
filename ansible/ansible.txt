@@ -188,4 +188,14 @@ user03.yml 过滤器
         password: "{{'123456'|password_hash('sha512')}}"
     - shell: chage -d 0 "{{username}}"
 
-
+user04.yml 忽略错误
+---
+- hosts: web1
+  remote_user: root
+  vars:
+    username: "zhang3"
+  tasks:
+    - shell: adduser "{{username}}"
+      ignore_errors: True
+    - shell: echo 123123 |passwd --stdin "{{username}}"
+    - shell: chage -d 0 "{{username}}"
