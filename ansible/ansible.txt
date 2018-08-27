@@ -211,6 +211,7 @@ http02.yml handlers 使用
         state: installed
       notify:
         - boot start
+        - restart httpd
     - lineinfile:
         path: /etc/httpd/conf/httpd.conf
         regexp: '^Listen '
