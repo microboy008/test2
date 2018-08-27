@@ -176,3 +176,16 @@ user02.yml 变量
     - shell: chage -d 0 "{{username}}"
 
 
+user03.yml 过滤器
+---
+- hosts: cache
+  remote_user: root
+  vars:
+    username: "jj"
+  tasks:
+    - user:
+        name: "{{username}}"
+        password: "{{'123456'|password_hash('sha512')}}"
+    - shell: chage -d 0 "{{username}}"
+
+
