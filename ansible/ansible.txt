@@ -163,4 +163,16 @@ playbook httpd.yml
         state: started
         enabled: yes
 
+user02.yml 变量
+---
+- hosts: db1,web1
+  remote_user: root
+  vars:
+    username: "jj"
+  tasks:
+    - user:
+        name: "{{username}}"
+    - shell: echo 123456 |passwd --stdin "{{username}}"
+    - shell: chage -d 0 "{{username}}"
+
 
