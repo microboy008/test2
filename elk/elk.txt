@@ -16,3 +16,15 @@ network.host: 0.0.0.0
 启动服务 systemctl start elasticsearch
 
 浏览器访问验证 http://192.168.1.11:9200/
+
+在所有节点安装 
+yum install -y java-1.8.0-openjdk elasticsearch
+
+修改配置文件
+cluster.name: nsd1804
+node.name: 本机主机名称
+network.host: 0.0.0.0
+discovery.zen.ping.unicast.hosts: ["es1", "es2", "es3"]
+
+验证集群
+http://192.168.1.11:9200/_cluster/health?pretty
