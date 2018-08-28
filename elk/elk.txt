@@ -28,3 +28,17 @@ discovery.zen.ping.unicast.hosts: ["es1", "es2", "es3"]
 
 验证集群
 http://192.168.1.11:9200/_cluster/health?pretty
+
+插件安装
+/usr/share/elasticsearch/bin/plugin install ftp://192.168.1.254/public/bigdesk-master.zip
+/usr/share/elasticsearch/bin/plugin install ftp://192.168.1.254/public/elasticsearch-head-master.zip
+/usr/share/elasticsearch/bin/plugin install ftp://192.168.1.254/public/elasticsearch-kopf-master.zip
+
+访问插件 head
+http://192.168.1.11:9200/_plugin/head
+访问插件 kopf
+http://192.168.1.11:9200/_plugin/kopf
+访问插件 bigdesk
+http://192.168.1.11:9200/_plugin/bigdesk
+
+
