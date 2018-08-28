@@ -35,10 +35,10 @@ http://192.168.1.11:9200/_cluster/health?pretty
 /usr/share/elasticsearch/bin/plugin install ftp://192.168.1.254/public/elasticsearch-kopf-master.zip
 
 访问插件 head
-http://192.168.1.11:9200/_plugin/head
+http://192.168.1.15:9200/_plugin/head
 访问插件 kopf
-http://192.168.1.11:9200/_plugin/kopf
+http://192.168.1.15:9200/_plugin/kopf
 访问插件 bigdesk
-http://192.168.1.11:9200/_plugin/bigdesk
+http://192.168.1.15:9200/_plugin/bigdesk
 
 
