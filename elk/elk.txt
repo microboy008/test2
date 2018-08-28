@@ -80,4 +80,32 @@ elasticsearch.pingTimeout: 1500
 elasticsearch.requestTimeout: 30000
 elasticsearch.startupTimeout: 5000
 
+数据批量导入
+有 index, type, id 的导入
+curl -XPOST http://192.168.1.13:9200/_bulk --data-binary @shakespeare.json
+
+无 index, type 有 id 的导入
+curl -XPOST http://192.168.1.13:9200/oo/xx/_bulk --data-binary @accounts.json
+
+有 多个index,type 无 id 的导入
+curl -XPOST http://192.168.1.13:9200/_bulk --data-binary @logs.jsonl
+
+数据批量查询
+curl -XGET http://192.168.1.12:9200/_mget?pretty -d '
+{ 
+  docs:[
+    {"_index": "oo",
+     "_type": "xx",
+     "_id": 99
+    },
+    {"_index": "shakespeare",
+     "_type": "act",
+     "_id": 80730
+    },
+    {"_index": "logstash-2015.05.20",
+     "_type": "log",
+     "_id": "AWTo2xXm16RGslV6jxJR"
+    }
+  ]
+}'
 
