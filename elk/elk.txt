@@ -169,3 +169,15 @@ local0.info                     @@192.168.1.20:514
 命令
 logger -p local0.info -t "testlog" "hello world"
 
+正则表达式分组匹配 (?<name>reg)
+
+正则宏路径
+/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-patterns-core-2.0.5/patterns
+
+filter{
+  grok{
+    match => ["message", "%{COMBINEDAPACHELOG}"]
+  }
+}
+
+
