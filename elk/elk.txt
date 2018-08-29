@@ -154,3 +154,18 @@ input {
 echo "test udp log" >/dev/udp/192.168.1.20/8888
 echo "test tcp log" >/dev/tcp/192.168.1.20/8888
 
+syslog 模块
+
+input {
+  ... ...
+  syslog {
+    port => 514
+    type => "syslog"
+  }
+}
+
+客户机配置 @@(tcp)  @(udp)
+local0.info                     @@192.168.1.20:514
+命令
+logger -p local0.info -t "testlog" "hello world"
+
