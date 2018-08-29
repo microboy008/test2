@@ -135,4 +135,22 @@ input {
   }
 }
 
+tcp & udp 模块
+input {
+  ... ...
+  tcp {
+    mode => "server"
+    host => "0.0.0.0"
+    port => 8888
+    type => "tcplog"
+  }
+  udp {
+    port => 9999
+    type => "udplog"
+  }
+}
+
+测试命令
+echo "test udp log" >/dev/udp/192.168.1.20/9999
+echo "test tcp log" >/dev/tcp/192.168.1.20/8888
 
