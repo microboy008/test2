@@ -124,3 +124,15 @@ output{
   stdout{ codec => "rubydebug" }
 }
 
+file 模块
+input {
+  ... ...
+  file {
+    path => ["/tmp/a.log", "/tmp/b.log"]
+    sincedb_path => "/var/lib/logstash/sincedb.log"
+    start_position => "beginning"
+    type => "filelog"
+  }
+}
+
+
