@@ -109,3 +109,6 @@ curl -XGET http://192.168.1.12:9200/_mget?pretty -d '
   ]
 }'
 
+插件文档地址
+https://www.elastic.co/guide/en/logstash/current/index.html
+
