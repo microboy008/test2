@@ -26,3 +26,16 @@ NN1: 表示 namenode
   不输入 yes，修改 /etc/ssh/ssh_config
   60行添加  StrictHostKeyChecking no
 
+配置 core-site.xml
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://nn01:9000</value>
+    </property>
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/var/hadoop</value>
+    </property>
+</configuration>
+
+ALL: 创建文件夹 /var/hadoop
