@@ -57,4 +57,22 @@ NN1: 配置 hdfs-site.xml
 </configuration>
 
 NN1: 配置 slaves
+node1
+node2
+node3
 
+ALL: 同步配置到所有主机
+
+NN01: 格式化 namenode
+./bin/hdfs namenode -format
+
+NN01: 启动集群
+./sbin/start-dfs.sh
+停止集群可以使用 ./sbin/stop-dfs.sh
+
+ALL: 验证角色 jps
+
+NN01: 验证集群是否组建成功
+./bin/hdfs dfsadmin -report
+
+服务启动日志路径 /usr/local/hadoop/logs
