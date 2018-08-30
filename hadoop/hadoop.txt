@@ -7,4 +7,22 @@ export HADOOP_CONF_DIR="/usr/local/hadoop/etc/hadoop"
 ./bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.6.jar wordcount oo xx
 
 #-----------------------------------------------------#
+ALL 表示所有主机，
+NODE 表示 node1,node2,node3
+NN1: 表示 namenode
+#-----------------------------------------------------#
+
+完全分布式集群搭建 -- HDFS
+192.168.1.10	nn01	namenode,secondarynamenode
+192.168.1.11	node1	datanode
+192.168.1.12	node2	datanode
+192.168.1.13	node3	datanode
+
+集群组建条件:
+1 ALL: 能相互 ping 通 (配置 /etc/hosts)
+2 ALL: 安装 java-1.8.0-openjdk-devel
+3 NN1: 能 ssh 免密登录所有集群主机，包括自己(不能提示输入 yes)
+  ssh 免密登录，部署 sshkey
+  不输入 yes，修改 /etc/ssh/ssh_config
+  60行添加  StrictHostKeyChecking no
 
