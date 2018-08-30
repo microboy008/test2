@@ -39,3 +39,22 @@ NN1: 表示 namenode
 </configuration>
 
 ALL: 创建文件夹 /var/hadoop
+
+NN1: 配置 hdfs-site.xml
+<configuration>
+    <property>
+        <name>dfs.namenode.http-address</name>
+        <value>nn01:50070</value>
+    </property>
+    <property>
+        <name>dfs.namenode.secondary.http-address</name>
+        <value>nn01:50090</value>
+    </property>
+    <property>
+        <name>dfs.replication</name>
+        <value>2</value>
+    </property>
+</configuration>
+
+NN1: 配置 slaves
+
