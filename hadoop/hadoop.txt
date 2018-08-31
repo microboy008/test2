@@ -109,3 +109,13 @@ sedondary namenode web 地址 http://192.168.1.10:50090
 yarn resourcemanager 管理地址 http://192.168.1.10:8088
 datanode web 地址 http://192.168.1.11:50075
 nodemanager web 地址 http://192.168.1.11:8042
+
+增加修复节点
+按照单机方法安装一台机器，部署运行的 java 环境
+拷贝 namenode 的文件到本机
+启动 datanode
+./sbin/hadoop-daemons.sh start datanode
+设置同步带宽
+./bin/hdfs dfsadmin -setBalancerBandwidth 60000000
+./sbin/start-balancer.sh
+
