@@ -192,3 +192,18 @@ setfacl -m u:nsd1804:rwx
 创建数据根目录 /var/hadoop
 mkdir /var/hadoop
 
+必须用 root 启动，必须先启动 ！！！
+./sbin/hadoop-daemon.sh --script ./bin/hdfs start portmap
+
+必须用代理用户启动，必须后启动 ！！！
+./sbin/hadoop-daemon.sh --script ./bin/hdfs start nfs3
+
+Client: 安装 nfs-utils 
+mount 共享目录
+mount -t nfs -o vers=3,proto=tcp,nolock,noatime,sync,noacl 192.168.1.15:/  /mnt/
+
+查看注册服务
+rpcinfo -p 192.168.1.15
+查看共享目录
+showmount -e 192.168.1.15
+
