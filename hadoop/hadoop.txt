@@ -140,3 +140,4 @@ yarn 停止 nodemanager
 yarn 查看节点状态
 ./bin/yarn node -list
 
+
