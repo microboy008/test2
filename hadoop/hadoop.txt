@@ -140,4 +140,34 @@ yarn 停止 nodemanager
 yarn 查看节点状态
 ./bin/yarn node -list
 
+NFS 网关
+1 配置 /etc/hosts (NFSGW)
+192.168.1.10	nn01
+192.168.1.11	node1
+192.168.1.12	node2
+192.168.1.13	node3
+192.168.1.15	nfsgw
+
+2 添加用户(nfsgw, nn01)
+groupadd -g 500 nsd1804
+useradd -u 500 -g 500 nsd1804
+
+NN01: 3 停止集群
+./sbin/stop-all.sh
+
+NN01: 4 增加配置 core-site.xml
+    <property>
+        <name>hadoop.proxyuser.nsd1804.groups</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.nsd1804.hosts</name>
+        <value>*</value>
+    </property>
+
+NN01: 5 同步配置到 node1 node2 node3
+NN01: 6 启动集群   ./sbin/start-dfs.sh
+NN01: 7 查看状态
+./bin/hdfs dfsadmin -report
+
 
