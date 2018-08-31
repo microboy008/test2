@@ -104,4 +104,8 @@ NN1: 启动服务 ./sbin/start-yarn.sh
 ALL: 验证角色 jps 
 NN1: 验证节点状态 ./bin/yarn node -list
 
-
+namenode web 地址 http://192.168.1.10:50070
+sedondary namenode web 地址 http://192.168.1.10:50090
+yarn resourcemanager 管理地址 http://192.168.1.10:8088
+datanode web 地址 http://192.168.1.11:50075
+nodemanager web 地址 http://192.168.1.11:8042
