@@ -170,4 +170,25 @@ NN01: 6 启动集群   ./sbin/start-dfs.sh
 NN01: 7 查看状态
 ./bin/hdfs dfsadmin -report
 
+NFSGW: 安装 java-1.8.0-openjdk-devel
+NFSGW: 同步 nn01 的 /usr/local/hadoop 到NFSGW的相同目录下
+NFSGW: hdfs-site.xml 增加配置
+    <property>
+        <name>nfs.exports.allowed.hosts</name>
+        <value>* rw</value>
+    </property>
+    <property>
+        <name>nfs.dump.dir</name>
+        <value>/var/nfstmp</value>
+    </property>
+
+NFSGW: 创建转储目录，并给用户 nsd1804 赋权
+mkdir /var/nfstmp
+chown nsd1804:nsd1804 /var/nfstmp
+
+NFSGW: 给 /usr/local/hadoop/logs 赋权
+setfacl -m u:nsd1804:rwx
+
+创建数据根目录 /var/hadoop
+mkdir /var/hadoop
 
