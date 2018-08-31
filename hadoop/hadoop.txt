@@ -119,3 +119,24 @@ nodemanager web 地址 http://192.168.1.11:8042
 ./bin/hdfs dfsadmin -setBalancerBandwidth 60000000
 ./sbin/start-balancer.sh
 
+删除节点
+<property>
+    <name>dfs.hosts.exclude</name>
+    <value>/usr/local/hadoop/etc/hadoop/exclude</value>
+</property>
+
+开始导出数据
+./bin/hdfs dfsadmin -refreshNodes
+
+查看状态
+Normal   正常状态
+Decommissioned  in  Program  数据正在迁移
+Decommissioned   数据迁移完成
+
+yarn 增加 nodemanager
+./sbin/yarn-daemon.sh start nodemanager
+yarn 停止 nodemanager
+./sbin/yarn-daemon.sh stop  nodemanager
+yarn 查看节点状态
+./bin/yarn node -list
+
