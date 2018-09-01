@@ -241,3 +241,22 @@ for i in node{1..3} nn01;do
     getstatus ${i}
 done
 
+kafka 搭建
+1 下载解压 kafka 压缩包
+2 把 kafka 拷贝到 /usr/local/kafka 下面
+3 修改配置文件 /usr/local/kafka/config/server.properties
+broker.id=11
+zookeeper.connect=node1:2181,node2:2181,node3:2181
+4 拷贝 kafka 到其他主机，并修改 broker.id ,不能重复
+5 启动 kafka 集群
+/usr/local/kafka/bin/kafka-server-start.sh -daemon
+/usr/local/kafka/config/server.properties
+
+验证集群
+创建一个 topic 
+./bin/kafka-topics.sh --create --partitions 1 --replication-factor 1 --zookeeper node3:2181 --topic nsd1804
+生产者
+./bin/kafka-console-producer.sh --broker-list node2:9092 --topic nsd1804
+消费者
+./bin/kafka-console-consumer.sh --bootstrap-server node1:9092 --topic nsd1804
+
