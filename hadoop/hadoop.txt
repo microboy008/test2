@@ -207,3 +207,23 @@ rpcinfo -p 192.168.1.15
 查看共享目录
 showmount -e 192.168.1.15
 
+zookeeper 安装
+1 配置 /etc/hosts ,所有集群主机可以相互 ping 通
+2 安装 java-1.8.0-openjdk-devel
+3 zookeeper 解压拷贝到 /usr/local/zookeeper
+4 配置文件改名，并在最后添加配置
+mv zoo_sample.cfg  zoo.cfg
+zoo.cfg 最后添加配置
+server.1=node1:2888:3888
+server.2=node2:2888:3888
+server.3=node3:2888:3888
+server.4=nn01:2888:3888:observer
+5 拷贝 /usr/local/zookeeper 到其他集群主机
+6 创建 mkdir /tmp/zookeeper
+ALL: 7 创建 myid 文件，id 必须与配置文件里主机名对应的 server.(id) 一致 echo 1 >
+/tmp/zookeeper/myid
+8 启动服务，单启动一台无法查看状态，需要启动全部集群以后才能查看状态
+/usr/local/zookeeper/bin/zkServer.sh start
+9 查看状态
+/usr/local/zookeeper/bin/zkServer.sh status
+
