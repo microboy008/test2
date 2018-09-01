@@ -261,6 +261,12 @@ zookeeper.connect=node1:2181,node2:2181,node3:2181
 ./bin/kafka-console-consumer.sh --bootstrap-server node1:9092 --topic nsd1804
 
 hadoop 高可用
+#-----------------------------------------------------#
+ALL: 所有机器
+nodeX： node1    node2    node3
+NN1: nn01
+NN2: nn02
+#-----------------------------------------------------#
 ALL: 配置 /etc/hosts
 192.168.1.10	nn01
 192.168.1.20	nn02
